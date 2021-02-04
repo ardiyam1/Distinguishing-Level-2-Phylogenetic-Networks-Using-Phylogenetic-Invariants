@@ -1,0 +1,266 @@
+restart;
+
+A = (1,1);C = (1,-1);G = (-1,1); T = (-1,-1);
+
+L = 
+{(A,A,A,A),(A,A,C,C),(A,A,G,G),(A,A,T,T),(A,C,A,C),(A,C,C,A),(A,C,G,T),(A,C,T,G),
+(A,G,A,G),(A,G,C,T),(A,G,G,A),(A,G,T,C),(A,T,A,T),(A,T,C,G),(A,T,G,C),(A,T,T,A),
+(C,A,A,C),(C,A,C,A),(C,A,G,T),(C,A,T,G),(C,C,A,A),(C,C,C,C),(C,C,G,G),(C,C,T,T),
+(C,G,A,T),(C,G,C,G),(C,G,G,C),(C,G,T,A),(C,T,A,G),(C,T,C,T),(C,T,G,A),(C,T,T,C),
+(G,A,A,G),(G,A,C,T),(G,A,G,A),(G,A,T,C),(G,C,A,T),(G,C,C,G),(G,C,G,C),(G,C,T,A),
+(G,G,A,A),(G,G,C,C),(G,G,G,G),(G,G,T,T),(G,T,A,C),(G,T,C,A),(G,T,G,T),(G,T,T,G),
+(T,A,A,T),(T,A,C,G),(T,A,G,C),(T,A,T,A),(T,C,A,G),(T,C,C,T),(T,C,G,A),(T,C,T,C),
+(T,G,A,C),(T,G,C,A),(T,G,G,T),(T,G,T,G),(T,T,A,A),(T,T,C,C),(T,T,G,G),(T,T,T,T)};
+
+
+x = hashTable{A => 0, C => 1, G => 1, T => 1};
+--x = hashTable{A => 0, C => 1, G => 2, T => 1};--K2P
+--x = hashTable{A => 0, C => 1, G => 2, T => 3};--K3P
+y = hashTable{A => 0, C => 1, G => 2, T => 3};
+
+L1 = toList apply(L,i->q_(y#(i#0),y#(i#1),y#(i#2),y#(i#3)));
+L2 = {a_0,a_1,a_2,a_3,
+      b_0,b_1,b_2,b_3,
+      c_0,c_1,c_2,c_3,
+      d_0,d_1,d_2,d_3,
+      e_0,e_1,e_2,e_3,
+      f_0,f_1,f_2,f_3,
+      g_0,g_1,g_2,g_3,
+      h_0,h_1,h_2,h_3,
+      j_0,j_1,j_2,j_3,
+      k_0,k_1,k_2,k_3,
+      l_0,l_1,l_2,l_3};
+
+R = QQ[(L2|L1), MonomialOrder=> Eliminate 44];
+
+-------------------------------------------------------------
+-------------------------------------------------------------
+----Parameterizations and substitution maps------------------
+-------------------------------------------------------------
+-------------------------------------------------------------
+Topos= {(0,1,2,3),(0,1,3,2),(0,2,1,3),(0,2,3,1),(0,3,1,2),(0,3,2,1),
+(1,0,2,3),(1,0,3,2),(1,2,0,3),(1,2,3,0),(1,3,0,2),(1,3,2,0),
+(2,0,1,3),(2,0,3,1),(2,1,0,3),(2,1,3,0),(2,3,0,1),(2,3,1,0),
+(3,0,1,2),(3,0,2,1),(3,1,0,2),(3,1,2,0),(3,2,0,1),(3,2,1,0)};
+
+--------parametrizations for the simple tree-child strict level-2 networks with four leaves-----
+------Network type 1 (1-24)----
+
+for z from 0 to 23 do{
+    ll = (Topos#z)#0,
+    ul = (Topos#z)#1,
+    ur = (Topos#z)#2,
+    lr = (Topos#z)#3,
+    w=z+1;
+ Eqn_w= toList apply(L,i->q_(y#(i#0),y#(i#1),y#(i#2),y#(i#3))-(a_(x#(i#ll#0*i#ul#0,i#ll#1*i#ul#1))*b_(x#(i#ul))*d_(x#(i#ur))*e_(x#(i#ur))*f_(x#(i#lr))		 +a_(x#(i#ll#0*i#ul#0,i#ll#1*i#ul#1))*b_(x#(i#ul))*d_(x#(i#ur))*e_(x#(i#ll#0*i#ul#0,i#ll#1*i#ul#1))*g_(x#(i#lr))
++a_(x#(i#ll))*c_(x#(i#ul))*d_(x#(i#ul#0*i#ur#0,i#ul#1*i#ur#1))*e_(x#(i#ul#0*i#ur#0,i#ul#1*i#ur#1))*f_(x#(i#lr))
++a_(x#(i#ll))*c_(x#(i#ul))*d_(x#(i#ul#0*i#ur#0,i#ul#1*i#ur#1))*e_(x#(i#ul))*g_(x#(i#lr)))*h_(x#(i#ll))*j_(x#(i#ul))*k_(x#(i#ur))*l_(x#(i#lr)));  
+Par_w= toList apply(L,i->(a_(x#(i#ll#0*i#ul#0,i#ll#1*i#ul#1))*b_(x#(i#ul))*d_(x#(i#ur))*e_(x#(i#ur))*f_(x#(i#lr))		 +a_(x#(i#ll#0*i#ul#0,i#ll#1*i#ul#1))*b_(x#(i#ul))*d_(x#(i#ur))*e_(x#(i#ll#0*i#ul#0,i#ll#1*i#ul#1))*g_(x#(i#lr))
++a_(x#(i#ll))*c_(x#(i#ul))*d_(x#(i#ul#0*i#ur#0,i#ul#1*i#ur#1))*e_(x#(i#ul#0*i#ur#0,i#ul#1*i#ur#1))*f_(x#(i#lr))
++a_(x#(i#ll))*c_(x#(i#ul))*d_(x#(i#ul#0*i#ur#0,i#ul#1*i#ur#1))*e_(x#(i#ul))*g_(x#(i#lr)))*h_(x#(i#ll))*j_(x#(i#ul))*k_(x#(i#ur))*l_(x#(i#lr)));
+PAR_w= matrix{{submatrix((vars R), 0..43),matrix{Par_w}}};
+};
+
+
+------Network type 2 (25-48)----
+
+for z from 0 to 23 do{
+    ll = (Topos#z)#0,
+    ul = (Topos#z)#1,
+    ur = (Topos#z)#2,
+    lr = (Topos#z)#3,
+    w=z+25;
+ Eqn_w= toList apply(L,i->q_(y#(i#0),y#(i#1),y#(i#2),y#(i#3))-(a_(x#(i#ll#0*i#ul#0,i#ll#1*i#ul#1))*b_(x#(i#ul))*d_(x#(i#ur))*e_(x#(i#ur))*f_(x#(i#lr))		 +a_(x#(i#ll#0*i#ul#0,i#ll#1*i#ul#1))*b_(x#(i#ul))*d_(x#(i#ur))*f_(x#(i#ur#0*i#lr#0,i#ur#1*i#lr#1))*g_(x#(i#ur))
++a_(x#(i#ll))*c_(x#(i#ul))*d_(x#(i#ul#0*i#ur#0,i#ul#1*i#ur#1))*e_(x#(i#ul#0*i#ur#0,i#ul#1*i#ur#1))*f_(x#(i#lr))
++a_(x#(i#ll))*c_(x#(i#ul))*d_(x#(i#ul#0*i#ur#0,i#ul#1*i#ur#1))*f_(x#(i#ul#0*i#ur#0*i#lr#0,i#ul#1*i#ur#1*i#lr#1))*g_(x#(i#ul#0*i#ur#0,i#ul#1*i#ur#1)))*h_(x#(i#ll))*j_(x#(i#ul))*k_(x#(i#ur))*l_(x#(i#lr)));  
+Par_w= toList apply(L,i->(a_(x#(i#ll#0*i#ul#0,i#ll#1*i#ul#1))*b_(x#(i#ul))*d_(x#(i#ur))*e_(x#(i#ur))*f_(x#(i#lr))		 +a_(x#(i#ll#0*i#ul#0,i#ll#1*i#ul#1))*b_(x#(i#ul))*d_(x#(i#ur))*f_(x#(i#ur#0*i#lr#0,i#ur#1*i#lr#1))*g_(x#(i#ur))
++a_(x#(i#ll))*c_(x#(i#ul))*d_(x#(i#ul#0*i#ur#0,i#ul#1*i#ur#1))*e_(x#(i#ul#0*i#ur#0,i#ul#1*i#ur#1))*f_(x#(i#lr))
++a_(x#(i#ll))*c_(x#(i#ul))*d_(x#(i#ul#0*i#ur#0,i#ul#1*i#ur#1))*f_(x#(i#ul#0*i#ur#0*i#lr#0,i#ul#1*i#ur#1*i#lr#1))*g_(x#(i#ul#0*i#ur#0,i#ul#1*i#ur#1)))*h_(x#(i#ll))*j_(x#(i#ul))*k_(x#(i#ur))*l_(x#(i#lr)));
+PAR_w= matrix{{submatrix((vars R), 0..43),matrix{Par_w}}};
+};
+
+
+
+------Network type 3 (49-72)----
+
+for z from 0 to 23 do{
+    ll = (Topos#z)#0,
+    ul = (Topos#z)#1,
+    ur = (Topos#z)#2,
+    lr = (Topos#z)#3,
+    w=z+49;
+ Eqn_w= toList apply(L,i->q_(y#(i#0),y#(i#1),y#(i#2),y#(i#3))-(a_(x#(i#ll))*c_(x#(i#ul))*d_(x#(i#ul))*e_(x#(i#ur#0*i#lr#0,i#ur#1*i#lr#1))*f_(x#(i#lr))		 +a_(x#(i#ll))*c_(x#(i#ul))*d_(x#(i#ul#0*i#lr#0,i#ul#1*i#lr#1))*e_(x#(i#ur))*g_(x#(i#lr))
++b_(x#(i#ll))*c_(x#(i#ll#0*i#ul#0,i#ll#1*i#ul#1))*d_(x#(i#ll#0*i#ul#0,i#ll#1*i#ul#1))*e_(x#(i#ur#0*i#lr#0,i#ur#1*i#lr#1))*f_(x#(i#lr))
++b_(x#(i#ll))*c_(x#(i#ll#0*i#ul#0,i#ll#1*i#ul#1))*d_(x#(i#ur))*e_(x#(i#ur))*g_(x#(i#lr)))*h_(x#(i#ll))*j_(x#(i#ul))*k_(x#(i#ur))*l_(x#(i#lr)));  
+
+Par_w= toList apply(L,i->(a_(x#(i#ll))*c_(x#(i#ul))*d_(x#(i#ul))*e_(x#(i#ur#0*i#lr#0,i#ur#1*i#lr#1))*f_(x#(i#lr))+a_(x#(i#ll))*c_(x#(i#ul))*d_(x#(i#ul#0*i#lr#0,i#ul#1*i#lr#1))*e_(x#(i#ur))*g_(x#(i#lr))
++b_(x#(i#ll))*c_(x#(i#ll#0*i#ul#0,i#ll#1*i#ul#1))*d_(x#(i#ll#0*i#ul#0,i#ll#1*i#ul#1))*e_(x#(i#ur#0*i#lr#0,i#ur#1*i#lr#1))*f_(x#(i#lr))
++b_(x#(i#ll))*c_(x#(i#ll#0*i#ul#0,i#ll#1*i#ul#1))*d_(x#(i#ur))*e_(x#(i#ur))*g_(x#(i#lr)))*h_(x#(i#ll))*j_(x#(i#ul))*k_(x#(i#ur))*l_(x#(i#lr)));
+PAR_w= matrix{{submatrix((vars R), 0..43),matrix{Par_w}}};
+};
+
+
+
+------Network type 4 (73-96)----
+
+for z from 0 to 23 do{
+    ll = (Topos#z)#0,
+    ul = (Topos#z)#1,
+    ur = (Topos#z)#2,
+    lr = (Topos#z)#3,
+    w=z+73;
+ Eqn_w= toList apply(L,i->q_(y#(i#0),y#(i#1),y#(i#2),y#(i#3))-(a_(x#(i#ll))*c_(x#(i#ul))*d_(x#(i#ul#0*i#ur#0,i#ul#1*i#ur#1))*e_(x#(i#ul))*f_(x#(i#lr))		 
++a_(x#(i#ll))*c_(x#(i#ul))*d_(x#(i#ur))*f_(x#(i#ul#0*i#lr#0,i#ul#1*i#lr#1))*g_(x#(i#ul))
++b_(x#(i#ll))*c_(x#(i#ll#0*i#ul#0,i#ll#1*i#ul#1))*d_(x#(i#ll#0*i#ul#0*i#ur#0,i#ll#1*i#ul#1*i#ur#1))*e_(x#(i#ll#0*i#ul#0,i#ll#1*i#ul#1))*f_(x#(i#lr))
++b_(x#(i#ll))*c_(x#(i#ll#0*i#ul#0,i#ll#1*i#ul#1))*d_(x#(i#ur))*f_(x#(i#ll#0*i#ul#0*i#lr#0,i#ll#1*i#ul#1*i#lr#1))*g_(x#(i#ll#0*i#ul#0,i#ll#1*i#ul#1)))*h_(x#(i#ll))*j_(x#(i#ul))*k_(x#(i#ur))*l_(x#(i#lr)));  
+Par_w= toList apply(L,i->(a_(x#(i#ll))*c_(x#(i#ul))*d_(x#(i#ul#0*i#ur#0,i#ul#1*i#ur#1))*e_(x#(i#ul))*f_(x#(i#lr))		 
++a_(x#(i#ll))*c_(x#(i#ul))*d_(x#(i#ur))*f_(x#(i#ul#0*i#lr#0,i#ul#1*i#lr#1))*g_(x#(i#ul))
++b_(x#(i#ll))*c_(x#(i#ll#0*i#ul#0,i#ll#1*i#ul#1))*d_(x#(i#ll#0*i#ul#0*i#ur#0,i#ll#1*i#ul#1*i#ur#1))*e_(x#(i#ll#0*i#ul#0,i#ll#1*i#ul#1))*f_(x#(i#lr))
++b_(x#(i#ll))*c_(x#(i#ll#0*i#ul#0,i#ll#1*i#ul#1))*d_(x#(i#ur))*f_(x#(i#ll#0*i#ul#0*i#lr#0,i#ll#1*i#ul#1*i#lr#1))*g_(x#(i#ll#0*i#ul#0,i#ll#1*i#ul#1)))*h_(x#(i#ll))*j_(x#(i#ul))*k_(x#(i#ur))*l_(x#(i#lr)));
+PAR_w= matrix{{submatrix((vars R), 0..43),matrix{Par_w}}};
+};
+
+
+
+
+
+---Tree ( 97-99)----------
+Topos = {(1, 2, 3, 0), (2, 1, 3, 0), (1, 0, 3, 2)};
+
+     
+for j from 0 to 2 do{
+    ll = (Topos#j)#0,
+    ul = (Topos#j)#1,
+    ur = (Topos#j)#2,
+    lr = (Topos#j)#3,
+    Par_(j + 97) =toList apply(L,i -> a_(x#(i#lr))*b_(x#(i#ll))*c_(x#(i#ul))*d_(x#(i#ur))*g_(x#(i#ul#0*i#3#0,i#ul#1*i#ur#1))); 
+    Eqn_(j + 97) = toList apply(L,i -> q_(y#(i#0),y#(i#1),y#(i#2),y#(i#3))-(a_(x#(i#lr))*b_(x#(i#ll))*c_(x#(i#ul))*d_(x#(i#ur))*g_(x#(i#ul#0*i#3#0,i#ul#1*i#ur#1))));
+    PAR_(j + 97) = matrix{{submatrix((vars R), 0..43),matrix{Par_(j + 97)}}};
+};
+
+
+
+
+
+
+
+--4-leaf triangle networks (100-105)
+
+
+Topos = {(1, 2, 3, 0), (2, 1, 3, 0), (3, 2, 1, 0), (1, 0, 3, 2), (1, 2, 0, 3), (3, 0, 1, 2)};
+
+     
+for j from 0 to 5 do{
+    ll = (Topos#j)#0,
+    ul = (Topos#j)#1,
+    ur = (Topos#j)#2,
+    lr = (Topos#j)#3,
+    Par_(j + 100) = toList apply(L,i-> a_(x#(i#lr))*b_(x#(i#ll))*c_(x#(i#ul))*d_(x#(i#ur))*f_(x#(i#ul))*g_(x#(i#lr#0*i#ll#0,i#lr#1*i#ll#1))*h_(x#(i#lr#0*i#ll#0,i#lr#1*i#ll#1))+ 
+                                    a_(x#(i#lr))*b_(x#(i#ll))*c_(x#(i#ul))*d_(x#(i#ur))*e_(x#(i#ul))*g_(x#(i#lr#0*i#ll#0,i#lr#1*i#ll#1))*h_(x#(i#ur)));
+    Eqn_(j + 100) = toList apply(L,i->q_(y#(i#0),y#(i#1),y#(i#2),y#(i#3))-(a_(x#(i#lr))*b_(x#(i#ll))*c_(x#(i#ul))*d_(x#(i#ur))*f_(x#(i#ul))*g_(x#(i#lr#0*i#ll#0,i#lr#1*i#ll#1))*h_(x#(i#lr#0*i#ll#0,i#lr#1*i#ll#1))+ 
+                                    a_(x#(i#lr))*b_(x#(i#ll))*c_(x#(i#ul))*d_(x#(i#ur))*e_(x#(i#ul))*g_(x#(i#lr#0*i#ll#0,i#lr#1*i#ll#1))*h_(x#(i#ur))));
+    PAR_(j + 100) = matrix{{submatrix((vars R), 0..43),matrix{Par_(j + 100)}}};
+};
+
+
+
+--4-leaf 4-cycle networks (106-117)
+
+Topos = {(1, 2, 3, 0), (3, 2, 1, 0), (1, 3, 2, 0), (2, 3, 1, 0), (1, 2, 0, 3), (0, 2, 1, 3), 
+         (0, 3, 2, 1), (2, 3, 0, 1), (0, 2, 3, 1), (3, 2, 0, 1), (2, 1, 3, 0), (3, 1, 2, 0)};
+     
+for j from 0 to 11 do{
+    ll = (Topos#j)#0,
+    ul = (Topos#j)#1,
+    ur = (Topos#j)#2,
+    lr = (Topos#j)#3,
+    Par_(j + 106) = toList apply(L, i-> a_(x#(i#lr))*b_(x#(i#ll))*c_(x#(i#ul))*d_(x#(i#ur))*f_(x#(i#ll))*g_(x#(i#ll#0*i#ul#0,i#ll#1*i#ul#1))*h_(x#(i#lr))+ 
+                                      a_(x#(i#lr))*b_(x#(i#ll))*c_(x#(i#ul))*d_(x#(i#ur))*e_(x#(i#ll))*g_(x#(i#ul))*h_(x#(i#ul#0*i#ur#0,i#ul#1*i#ur#1)));
+    Eqn_(j + 106) = toList apply(L, i-> q_(y#(i#0),y#(i#1),y#(i#2),y#(i#3))-(a_(x#(i#lr))*b_(x#(i#ll))*c_(x#(i#ul))*d_(x#(i#ur))*f_(x#(i#ll))*g_(x#(i#ll#0*i#ul#0,i#ll#1*i#ul#1))*h_(x#(i#lr))+ 
+                                      a_(x#(i#lr))*b_(x#(i#ll))*c_(x#(i#ul))*d_(x#(i#ur))*e_(x#(i#ll))*g_(x#(i#ul))*h_(x#(i#ul#0*i#ur#0,i#ul#1*i#ur#1))));
+    PAR_(j + 106) = matrix{{submatrix((vars R), 0..43),matrix{Par_(j + 106)}}};
+};
+
+
+
+
+
+--4-leaf, double triangle networks (118-120)
+
+Topos = {(1, 2, 3, 0), (2, 1, 3, 0), (1, 0, 3, 2)};
+
+
+for jj from 0 to 2 do{
+    ll = (Topos#jj)#0,
+    ul = (Topos#jj)#1,
+    ur = (Topos#jj)#2,
+    lr = (Topos#jj)#3,
+    Par_(jj + 118) = toList apply(L,i->
+    a_(x#(i#lr))*b_(x#(i#ll))*c_(x#(i#ul))*d_(x#(i#ur))*
+    f_(x#(i#ul))*g_(x#(i#lr#0*i#ll#0,i#lr#1*i#ll#1))*h_(x#(i#lr#0*i#ll#0,i#lr#1*i#ll#1))*k_(x#(i#lr))*l_(x#(i#lr#0*i#ll#0,i#lr#1*i#ll#1))  -- f,k present
+    +
+    a_(x#(i#lr))*b_(x#(i#ll))*c_(x#(i#ul))*d_(x#(i#ur))*
+    e_(x#(i#ul))*g_(x#(i#lr#0*i#ll#0,i#lr#1*i#ll#1))*h_(x#(i#ur))*k_(x#(i#lr))*l_(x#(i#lr#0*i#ll#0,i#lr#1*i#ll#1)) --e, k present
+    +
+    a_(x#(i#lr))*b_(x#(i#ll))*c_(x#(i#ul))*d_(x#(i#ur))*
+    f_(x#(i#ul))*g_(x#(i#lr#0*i#ll#0,i#lr#1*i#ll#1))*h_(x#(i#lr#0*i#ll#0,i#lr#1*i#ll#1))*j_(x#(i#lr))*l_(x#(i#ll))  -- f,j present
+    +
+    a_(x#(i#lr))*b_(x#(i#ll))*c_(x#(i#ul))*d_(x#(i#ur))*
+    e_(x#(i#ul))*g_(x#(i#lr#0*i#ll#0,i#lr#1*i#ll#1))*h_(x#(i#ur))*j_(x#(i#lr))*l_(x#(i#ll))); -- e,j present
+    Eqn_(jj + 118) = toList apply(L,i->q_(y#(i#0),y#(i#1),y#(i#2),y#(i#3))-(
+    a_(x#(i#lr))*b_(x#(i#ll))*c_(x#(i#ul))*d_(x#(i#ur))*
+    f_(x#(i#ul))*g_(x#(i#lr#0*i#ll#0,i#lr#1*i#ll#1))*h_(x#(i#lr#0*i#ll#0,i#lr#1*i#ll#1))*k_(x#(i#lr))*l_(x#(i#lr#0*i#ll#0,i#lr#1*i#ll#1))  -- f,k present
+    +
+    a_(x#(i#lr))*b_(x#(i#ll))*c_(x#(i#ul))*d_(x#(i#ur))*
+    e_(x#(i#ul))*g_(x#(i#lr#0*i#ll#0,i#lr#1*i#ll#1))*h_(x#(i#ur))*k_(x#(i#lr))*l_(x#(i#lr#0*i#ll#0,i#lr#1*i#ll#1)) --e, k present
+    +
+    a_(x#(i#lr))*b_(x#(i#ll))*c_(x#(i#ul))*d_(x#(i#ur))*
+    f_(x#(i#ul))*g_(x#(i#lr#0*i#ll#0,i#lr#1*i#ll#1))*h_(x#(i#lr#0*i#ll#0,i#lr#1*i#ll#1))*j_(x#(i#lr))*l_(x#(i#ll))  -- f,j present
+    +
+    a_(x#(i#lr))*b_(x#(i#ll))*c_(x#(i#ul))*d_(x#(i#ur))*
+    e_(x#(i#ul))*g_(x#(i#lr#0*i#ll#0,i#lr#1*i#ll#1))*h_(x#(i#ur))*j_(x#(i#lr))*l_(x#(i#ll)))); -- e,j present
+    PAR_(jj + 118) = matrix{{submatrix((vars R), 0..43),matrix{Par_(jj + 118)}}};
+};
+
+
+----------------------------------------------------
+
+----- phylogenetic invariants for Lemma 4.5----
+
+
+f1=q_(3,2,2,3)^3-q_(3,2,2,3)^2*q_(3,2,3,2)-q_(3,2,2,3)*q_(3,2,3,2)^2+q_(3,2,3,2)^3-q_(3,2,2,3)^2*q_(3,3,2,2)+2*q_(3,2,2,3)*q_(3,2,3,2)*q_(3,3,2,2)-q_(3,2,3,2)^2*q_(3,3,2,2)-q_(3,2,2,3)*q_(3,3,2,2)^2-q_(3,2,3,2)*q_(3,3,2,2)^2+q_(3,3,2,2)^3-q_(3,2,2,3)^2*q_(3,3,3,3)+2*q_(3,2,2,3)*q_(3,2,3,2)*q_(3,3,3,3)-q_(3,2,3,2)^2*q_(3,3,3,3)+2*q_(3,2,2,3)*q_(3,3,2,2)*q_(3,3,3,3)+2*q_(3,2,3,2)*q_(3,3,2,2)*q_(3,3,3,3)-q_(3,3,2,2)^2*q_(3,3,3,3)-q_(3,2,2,3)*q_(3,3,3,3)^2-q_(3,2,3,2)*q_(3,3,3,3)^2-q_(3,3,2,2)*q_(3,3,3,3)^2+q_(3,3,3,3)^3;
+
+
+f2=q_(1,3,3,1)-q_(2,1,2,1);
+
+
+f3= q_(0,0,1,1)*q_(1,2,1,2)*q_(2,0,2,0)*q_(3,0,0,3) - q_(0,0,1,1)*q_(1,2,0,3)*q_(2,0,2,0)*q_(3,0,1,2) +
+     q_(0,0,1,1)*q_(1,0,2,3)*q_(2,2,0,0)*q_(3,0,1,2) - q_(0,0,0,0)*q_(1,0,2,3)*q_(2,2,1,1)*q_(3,0,1,2);
+     
+f4=q_(3,1,1,3)-q_(3,1,3,1)+q_(3,3,1,1)+q_(3,3,3,3);
+
+
+--------------polynomial vanish only on network 1,2,3 but not 4---------------
+for j from 1 to 120 do{
+    print(j, sub(f1, PAR_j) == 0)
+}
+
+
+for j from 1 to 120 do{
+    print(j, sub(f2, PAR_j) == 0)
+}
+
+
+for j from 1 to 120 do{
+    print(j, sub(f3, PAR_j) == 0)
+}
+
+
+
+
+
+
+
+
+
+
