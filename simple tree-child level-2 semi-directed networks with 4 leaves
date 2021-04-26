@@ -225,7 +225,7 @@ for jj from 0 to 2 do{
 
 ----------------------------------------------------
 
------ phylogenetic invariants for Lemma 4.5----
+----- Phylogenetic invariants for Proposition 5.4----
 
 
 
@@ -241,7 +241,7 @@ f3=q_(3,2,2,3)^3-q_(3,2,2,3)^2*q_(3,2,3,2)-q_(3,2,2,3)*q_(3,2,3,2)^2+q_(3,2,3,2)
      
 
 
---------networks vanish on each polynomial--------------
+--------Networks that vanish on each polynomial--------------
 
 for j from 1 to 120 do{
     print(j, sub(f1, PAR_j) == 0)
